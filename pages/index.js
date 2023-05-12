@@ -1,124 +1,489 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-
+import CafeKarakLogo from '../public/CafeKarakLogo.png'
 const inter = Inter({ subsets: ['latin'] })
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import A1 from '../public/A1.jpg'
+import A2 from '../public/A2.jpg'
+import A3 from '../public/A4.jpg'
+import A4 from '../public/A3.jpg'
+import S1 from '../public/S1.jpg'
+import S2 from '../public/S2.jpg'
+import So1 from '../public/So1.jpg'
+import E1 from '../public/E1.jpg'
+import E2 from '../public/E2.jpg'
+import E3 from '../public/E3.jpg'
+import Sa1 from '../public/Sa1.jpg'
+import Sa2 from '../public/Sa2.jpg'
+import P1 from '../public/P1.jpg'
+import P2 from '../public/P2.jpg'
+import P3 from '../public/P3.jpg'
+import P4 from '../public/P4.jpg'
+import C1 from '../public/C1.jpg'
+import C2 from '../public/C2.jpg'
+import T1 from '../public/T1.jpg'
+import { data } from 'autoprefixer'
 
-export default function Home() {
+
+// #E3B1F6
+// #FF4F8B
+// #F8E356
+// #C850C0
+
+export default function Home({categories, appetizers, salads, soups, entrees, sandwiches, pizza, desserts, beverages}) {
+  const router = useRouter();
+  const currentRoute = router.pathname;
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className='w-[100%] h-[100%] flex flex-col justify-center items-center'>
+      <div className='w-[80%] h-auto flex flex-row flex-wrap justify-evenly'>
+        {
+          categories.map(
+            (data, index) => {
+              return(
+                <Link key={index} href={`#${data}`} className={`${currentRoute === `#${data}`? 'w-[150px] h-[50px] border-3 border-[#FF4F8B] rounded-full bg-[#F8E356] mt-5 flex items-center justify-center' : 'w-[150px] h-[50px] border-2 border-[#F0F0F0] rounded-full bg-[#F0F0F0] mt-5 flex items-center justify-center hover:bg-[#F8E356] hover:border-[#F8E356]'}`}>
+                  <span className='font-ubuntu text-xl text-[black]'>{data}</span>
+                  {/* <Image
+                    src={data.src}
+                    alt="Logo"      
+                    loading="lazy"
+                    width = {20}
+                    height={20}
+                    className='w-10 h-10'
+                  /> */}
+                </Link>
+              ) 
+            }
+          )
+        }
+      </div>
+      
+      <div className='w-[90%] h-auto flex flex-col justify-start items-start'>
+        
+        <div className='w-[100%] h-auto mt-10 flex flex-col justify-start items-start'>
+          <span id='Appetizers' className='text-[#FF4F8B] font-sans font-semibold text-6xl'>Appetizers</span>
+          <div className='w-[100%] h-auto mt-5 flex flex-wrap justify-start items-center'>
+            {
+             appetizers.map(
+              (data, index) => {
+                return(
+                  <div key={index} className='w-[275px] h-[325px] mr-5 flex flex-col justify-center items-center border border-gray-200  hover:border-[3px] hover:border-[#F8E356] rounded-xl'>
+                    <div className='w-[100%] h-[275px]'>
+                      <Image
+                        src={data.src}
+                        alt="Logo"      
+                        loading="lazy"
+                        width = {275}
+                        height={260}
+                        className='border rounded-xl'
+                      />
+                    </div>
+
+                    <p className='font-ubuntu text-lg font-semibold'>{data.name}</p>
+                    <div className='flex flex-row justify-start items-start'>
+                      <p className='font-ubuntu text-md font-normal'>Price: $</p>
+                      <p className='font-ubuntu text-md font-normal'>{data.price}</p>
+                    </div>
+                    <button className='w-[80%] h-auto border rounded-full mt-2 bg-red-600'>
+                      <span className='font-ubuntu text-md font-normal text-white'>Add to cart</span>
+                    </button>
+                  </div>
+                )
+              }
+             ) 
+            }
+          </div>
         </div>
+
+        <div className='w-[100%] h-auto mt-10 flex flex-col justify-start items-start'>
+          <span id='Salads' className='text-[#FF4F8B] font-sans font-semibold text-6xl'>Salads</span>
+          <div className='w-[100%] h-auto mt-5 flex flex-wrap justify-start items-center'>
+            {
+             salads.map(
+              (data, index) => {
+                return(
+                  <div key={index} className='w-[275px] h-[325px] mr-5 flex flex-col justify-center items-center border border-gray-200  hover:border-[3px] hover:border-[#F8E356] rounded-xl'>
+                    <div className='w-[100%] h-[275px]'>
+                      <Image
+                        src={data.src}
+                        alt="Logo"      
+                        loading="lazy"
+                        width = {275}
+                        height={260}
+                        className='border rounded-xl'
+                      />
+                    </div>
+
+                    <p className='font-ubuntu text-lg font-semibold'>{data.name}</p>
+                    <div className='flex flex-row justify-start items-start'>
+                      <p className='font-ubuntu text-md font-normal'>Price: $</p>
+                      <p className='font-ubuntu text-md font-normal'>{data.price}</p>
+                    </div>
+                    <button className='w-[80%] h-auto border rounded-full mt-2 bg-red-600'>
+                      <span className='font-ubuntu text-md font-normal text-white'>Add to cart</span>
+                    </button>
+                  </div>
+                )
+              }
+             ) 
+            }
+          </div>
+        </div>
+
+        <div className='w-[100%] h-auto mt-10 flex flex-col justify-start items-start'>
+          <span id='Soups' className='text-[#FF4F8B] font-sans font-semibold text-6xl'>Soups</span>
+          <div className='w-[100%] h-auto mt-5 flex flex-wrap justify-start items-center'>
+            {
+             soups.map(
+              (data, index) => {
+                return(
+                  <div key={index} className='w-[275px] h-[325px] mr-5 flex flex-col justify-center items-center border border-gray-200  hover:border-[3px] hover:border-[#F8E356] rounded-xl'>
+                    <div className='w-[100%] h-[275px]'>
+                      <Image
+                        src={data.src}
+                        alt="Logo"      
+                        loading="lazy"
+                        width = {275}
+                        height={260}
+                        className='border rounded-xl'
+                      />
+                    </div>
+
+                    <p className='font-ubuntu text-lg font-semibold'>{data.name}</p>
+                    <div className='flex flex-row justify-start items-start'>
+                      <p className='font-ubuntu text-md font-normal'>Price: $</p>
+                      <p className='font-ubuntu text-md font-normal'>{data.price}</p>
+                    </div>
+                    <button className='w-[80%] h-auto border rounded-full mt-2 bg-red-600'>
+                      <span className='font-ubuntu text-md font-normal text-white'>Add to cart</span>
+                    </button>
+                  </div>
+                )
+              }
+             ) 
+            }
+          </div>
+        </div>
+         
+        <div className='w-[100%] h-auto mt-10 flex flex-col justify-start items-start'>
+          <span id='Entrees' className='text-[#FF4F8B] font-sans font-semibold text-6xl'>Entrees</span>
+          <div className='w-[100%] h-auto mt-5 flex flex-wrap justify-start items-center'>
+            {
+             entrees.map(
+              (data, index) => {
+                return(
+                  <div key={index} className='w-[275px] h-[325px] mr-5 flex flex-col justify-center items-center border border-gray-200  hover:border-[3px] hover:border-[#F8E356] rounded-xl'>
+                    <div className='w-[100%] h-[275px]'>
+                      <Image
+                        src={data.src}
+                        alt="Logo"      
+                        loading="lazy"
+                        width = {275}
+                        height={260}
+                        className='border rounded-xl'
+                      />
+                    </div>
+
+                    <p className='font-ubuntu text-lg font-semibold'>{data.name}</p>
+                    <div className='flex flex-row justify-start items-start'>
+                      <p className='font-ubuntu text-md font-normal'>Price: $</p>
+                      <p className='font-ubuntu text-md font-normal'>{data.price}</p>
+                    </div>
+                    <button className='w-[80%] h-auto border rounded-full mt-2 bg-red-600'>
+                      <span className='font-ubuntu text-md font-normal text-white'>Add to cart</span>
+                    </button>
+                  </div>
+                )
+              }
+             ) 
+            }
+          </div>
+        </div>
+
+        <div className='w-[100%] h-auto mt-10 flex flex-col justify-start items-start'>
+          <span id='Sandwiches' className='text-[#FF4F8B] font-sans font-semibold text-6xl'>Sandwiches</span>
+          <div className='w-[100%] h-auto mt-5 flex flex-wrap justify-start items-center'>
+            {
+             sandwiches.map(
+              (data, index) => {
+                return(
+                  <div key={index} className='w-[275px] h-[325px] mr-5 flex flex-col justify-center items-center border border-gray-200  hover:border-[3px] hover:border-[#F8E356] rounded-xl'>
+                    <div className='w-[100%] h-[275px]'>
+                      <Image
+                        src={data.src}
+                        alt="Logo"      
+                        loading="lazy"
+                        width = {275}
+                        height={260}
+                        className='border rounded-xl'
+                      />
+                    </div>
+
+                    <p className='font-ubuntu text-lg font-semibold'>{data.name}</p>
+                    <div className='flex flex-row justify-start items-start'>
+                      <p className='font-ubuntu text-md font-normal'>Price: $</p>
+                      <p className='font-ubuntu text-md font-normal'>{data.price}</p>
+                    </div>
+                    <button className='w-[80%] h-auto border rounded-full mt-2 bg-red-600'>
+                      <span className='font-ubuntu text-md font-normal text-white'>Add to cart</span>
+                    </button>
+                  </div>
+                )
+              }
+             ) 
+            }
+          </div>
+        </div>
+        
+        <div className='w-[100%] h-auto mt-10 flex flex-col justify-start items-start'>
+          <span id='Pizza' className='text-[#FF4F8B] font-sans font-semibold text-6xl'>Pizza</span>
+          <div className='w-[100%] h-auto mt-5 flex flex-wrap justify-start items-center'>
+            {
+             pizza.map(
+              (data, index) => {
+                return(
+                  <div key={index} className='w-[275px] h-[325px] mr-5 flex flex-col justify-center items-center border border-gray-200  hover:border-[3px] hover:border-[#F8E356] rounded-xl'>
+                    <div className='w-[100%] h-[275px]'>
+                      <Image
+                        src={data.src}
+                        alt="Logo"      
+                        loading="lazy"
+                        width = {275}
+                        height={260}
+                        className='border rounded-xl'
+                      />
+                    </div>
+
+                    <p className='font-ubuntu text-lg font-semibold'>{data.name}</p>
+                    <div className='flex flex-row justify-start items-start'>
+                      <p className='font-ubuntu text-md font-normal'>Price: $</p>
+                      <p className='font-ubuntu text-md font-normal'>{data.price}</p>
+                    </div>
+                    <button className='w-[80%] h-auto border rounded-full mt-2 bg-red-600'>
+                      <span className='font-ubuntu text-md font-normal text-white'>Add to cart</span>
+                    </button>
+                  </div>
+                )
+              }
+             ) 
+            }
+          </div>
+        </div>
+
+        <div className='w-[100%] h-auto mt-10 flex flex-col justify-start items-start'>
+          <span id='Desserts' className='text-[#FF4F8B] font-sans font-semibold text-6xl'>Desserts</span>
+          <div className='w-[100%] h-auto mt-5 flex flex-wrap justify-start items-center'>
+            {
+             desserts.map(
+              (data, index) => {
+                return(
+                  <div key={index} className='w-[275px] h-[325px] mr-5 flex flex-col justify-center items-center border border-gray-200  hover:border-[3px] hover:border-[#F8E356] rounded-xl'>
+                    <div className='w-[100%] h-[240px]'>
+                      <Image
+                        src={data.src}
+                        alt="Logo"      
+                        loading="lazy"
+                        width = {275}
+                        height={250}
+                        className='border rounded-xl'
+                      />
+                    </div>
+
+                    <p className='font-ubuntu text-lg font-semibold'>{data.name}</p>
+                    <div className='flex flex-row justify-start items-start'>
+                      <p className='font-ubuntu text-md font-normal'>Price: $</p>
+                      <p className='font-ubuntu text-md font-normal'>{data.price}</p>
+                    </div>
+                    <button className='w-[80%] h-auto border rounded-full mt-2 bg-red-600'>
+                      <span className='font-ubuntu text-md font-normal text-white'>Add to cart</span>
+                    </button>
+                  </div>
+                )
+              }
+             ) 
+            }
+          </div>
+        </div>
+        
+        <div className='w-[100%] h-auto mt-10 flex flex-col justify-start items-start'>
+          <span id='Beverages' className='text-[#FF4F8B] font-sans font-semibold text-6xl'>Beverages</span>
+          <div className='w-[100%] h-auto mt-5 flex flex-wrap justify-start items-center'>
+            {
+             beverages.map(
+              (data, index) => {
+                return(
+                  <div key={index} className='w-[275px] h-[325px] mr-5 flex flex-col justify-center items-center border border-gray-200  hover:border-[3px] hover:border-[#F8E356] rounded-xl'>
+                    <div className='w-[100%] h-[240px]'>
+                      <Image
+                        src={data.src}
+                        alt="Logo"      
+                        loading="lazy"
+                        width = {275}
+                        height={220}
+                        className='border rounded-xl'
+                      />
+                    </div>
+
+                    <p className='font-ubuntu text-lg font-semibold'>{data.name}</p>
+                    <div className='flex flex-row justify-start items-start'>
+                      <p className='font-ubuntu text-md font-normal'>Price: $</p>
+                      <p className='font-ubuntu text-md font-normal'>{data.price}</p>
+                    </div>
+                    <button className='w-[80%] h-auto border rounded-full mt-2 bg-red-600'>
+                      <span className='font-ubuntu text-md font-normal text-white'>Add to cart</span>
+                    </button>
+                  </div>
+                )
+              }
+             ) 
+            }
+          </div>
+        </div>
+
       </div>
+    </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
   )
+}
+
+
+
+export async function getStaticProps(){
+  // Here we can use Axios if we want as well
+  const response = ['Appetizers','Salads','Soups','Entrees','Sandwiches','Pizza','Desserts','Beverages']
+  const categories = response
+  const appetizers = [
+    {
+      name: "Bruschetta",
+      src: A1,
+      price: 8.99
+    },
+    {
+      name: "Mozzarella Sticks",
+      src: A4,
+      price: 10.99
+    },
+    {
+      name: "Garlic Bread",
+      src: A3,
+      price: 7.99
+    },
+    {
+      name: "Chicken Wings",
+      src: A2,
+      price: 12.99
+    }
+  ]
+  
+  const salads = [
+    {
+      name: "Caesar Salad",
+      src: S1,
+      price: 9.99
+    },
+    {
+      name: "Greek Salad",
+      src: S2,
+      price: 11.99
+    }
+  ]
+
+  const soups = [
+    {
+      name: "Tomato Soup",
+      src: So1,
+      price: 6.99
+    }
+  ]
+
+  const entrees = [
+    {
+      name: "Grilled Salmon",
+      src: E1,
+      price: 18.99
+    },
+    {
+      name: "Chicken Alfredo",
+      src: E2,
+      price: 15.99
+    },
+    {
+      name: "Steak Frites",
+      src: E3,
+      price: 22.99
+    }
+  ]
+
+  const sandwiches = [
+    {
+      name: "Classic BLT",
+      src: Sa1,
+      price: 10.99
+    },
+    {
+      name: "Grilled Cheese",
+      src: Sa2,
+      price: 8.99
+    }
+  ]
+
+  const pizza = [
+    {
+      name: "Margherita Pizza",
+      src: P1,
+      price: 12.99
+    },
+    {
+      name: "Pepperoni Pizza",
+      src: P2,
+      price: 14.99
+    },
+    {
+      name: "Hawaiian Pizza",
+      src: P3,
+      price: 15.99
+    },
+    {
+      name: "Vegetarian Pizza",
+      src: P4,
+      price: 13.99
+    }
+  ]
+
+  const desserts = [
+    {
+      name: "Chocolate Cake",
+      src: C1,
+      price: 7.99
+    },
+    {
+      name: "Tiramisu",
+      src: C2,
+      price: 8.99
+    }
+  ]
+
+  const beverages = [
+    {
+      name: "Iced Tea",
+      src: T1,
+      price: 2.99
+    }
+  ]
+  
+  console.log(categories)
+  return {
+      props: {
+        // posts: posts.slice(0,20)
+        categories: categories,
+        appetizers: appetizers,
+        salads: salads,
+        soups: soups,
+        entrees: entrees,
+        sandwiches: sandwiches,
+        pizza: pizza,
+        desserts: desserts,
+        beverages: beverages
+      }
+  }
 }
